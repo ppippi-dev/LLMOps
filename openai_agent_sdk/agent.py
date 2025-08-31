@@ -1,8 +1,8 @@
-import os
 import asyncio
+import os
 
-from agents.mcp import MCPServerStdio
 from agents import Agent, Runner
+from agents.mcp import MCPServerStdio
 
 from settings import settings
 
@@ -25,7 +25,6 @@ async def main():
 
         result = await Runner.run(agent, "삼성전자 주가 얼마야?")
         print(result)
-
         print(result.context_wrapper)
 
 

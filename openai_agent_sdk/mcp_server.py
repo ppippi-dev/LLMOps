@@ -9,9 +9,8 @@ import os
 from typing import Optional
 
 import yfinance as yf
-from pydantic import BaseModel, Field
 from mcp.server.fastmcp import FastMCP
-
+from pydantic import BaseModel, Field
 
 # 로깅 설정
 _log_level_name = os.getenv("MCP_LOG_LEVEL", "INFO").upper()
@@ -123,10 +122,7 @@ def extract_stock_code_prompt(user_input: str) -> dict:
     )
     return {
         "role": "user",
-        "content": (
-            "아래 질문에서 종목코드만 반환해. 예시는 '005930' 처럼 6자리 숫자야.\n"
-            f"질문: {user_input}"
-        ),
+        "content": (f"아래 질문에서 종목코드만 반환해. 예시는 '005930' 처럼 6자리 숫자야.\n질문: {user_input}"),
     }
 
 

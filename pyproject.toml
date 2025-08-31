@@ -12,3 +12,10 @@ dependencies = [
     "openai-agents>=0.2.9",
     "pydantic-ai>=0.8.0",
 ]
+
+[tool.ruff]
+line-length = 119
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "C"]
+ignore = ["D"]
