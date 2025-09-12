@@ -11,6 +11,8 @@ dependencies = [
     "pydantic-settings>=2.5.2",
     "openai-agents>=0.2.9",
     "pydantic-ai>=0.8.0",
+    "google-adk>=1.13.0",
+    "litellm>=1.77.0",
 ]
 
 [tool.ruff]
