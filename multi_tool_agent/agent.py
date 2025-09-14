@@ -1,7 +1,6 @@
+"""Multi-tool agent example"""
+
 import asyncio
-import logging
-import os
-import warnings
 
 from google.adk.agents import Agent
 from google.adk.models.lite_llm import LiteLlm  # For multi-model support
@@ -9,19 +8,16 @@ from google.adk.runners import Runner
 from google.adk.sessions import InMemorySessionService
 from google.genai import types  # For creating message Content/Parts
 
+from settings import get_logger, settings
+
 # Ignore all warnings
-warnings.filterwarnings("ignore")
 
-
-logging.basicConfig(level=logging.ERROR)
-
-print("Libraries imported.")
-MODEL_GPT_5_NANO = "openai/gpt-5-nano"  # You can also try: gpt-4.1-mini, gpt-4o etc.
+logger = get_logger(__name__)
 
 
 openai_llm = LiteLlm(
-    model=MODEL_GPT_5_NANO,
-    api_key=os.environ.get("OPENAI_API_KEY"),
+    model=f"openai/{settings.OPENAI_MODEL}",
+    api_key=settings.OPENAI_API_KEY,
 )
 
 
@@ -138,10 +134,10 @@ async def run_conversation():
     )
 
 
+async def main():
+    await init_session()
+    await run_conversation()
+
+
 if __name__ == "__main__":
-
-    async def run_demo():
-        await init_session()
-        await run_conversation()
-
-    asyncio.run(run_demo())
+    asyncio.run(main())
